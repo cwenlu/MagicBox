@@ -1,0 +1,86 @@
+//gradle build --scan
+//需要下面配置gradle<4.3,反之不需要
+////https://docs.gradle.com/enterprise/gradle-plugin/
+//plugins {
+//    id 'com.gradle.enterprise' version '3.8.1'
+//}
+//
+//gradleEnterprise {
+//    buildScan {
+//        termsOfServiceUrl = 'https://gradle.com/terms-of-service'
+//        termsOfServiceAgree = 'yes'
+//    }
+//}
+
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+
+//    这样有问题
+//    //配置一个发现策略,可以避免再配置buildScript#classpath
+    resolutionStrategy {
+        eachPlugin {
+            if (requested.id.id == "dagger.hilt.android.plugin") {
+                useModule("com.google.dagger:hilt-android-gradle-plugin:2.41")
+            }
+        }
+    }
+}
+
+// Enable Gradle's version catalog support
+// https://docs.gradle.org/current/userguide/platforms.html
+enableFeaturePreview('VERSION_CATALOGS')
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    //https://juejin.cn/post/6997396071055900680
+    //https://developer.android.google.cn/jetpack/androidx/releases/lifecycle#version_25_2
+    versionCatalogs {
+//        def activity_version = "1.4.0"
+
+        libs {
+            version("minSdk", "21")
+            version("targetSdk", "31")
+            version("compileSdk", "31")
+
+            version("compose-compiler", "1.1.0")
+            version("activity", "1.4.0")
+            version("lifecycle", "2.4.1")
+            version("room", "2.4.1")
+            version("hilt", "2.40.5")
+
+//            alias("activity").to("androidx.activity:activity:$activity_version")
+            alias("activity-ktx").to("androidx.activity", "activity-ktx").versionRef("activity")
+            alias("core-ktx").to('androidx.core:core-ktx:1.7.0')
+            alias("lifecycle-runtime-ktx").to("androidx.lifecycle", "lifecycle-runtime-ktx").versionRef("lifecycle")
+            alias("lifecycle-viewmodel-ktx").to("androidx.lifecycle", "lifecycle-viewmodel-ktx").versionRef("lifecycle")
+            alias("lifecycle-livedata-ktx").to("androidx.lifecycle", "lifecycle-livedata-ktx").versionRef("lifecycle")
+            alias("room-runtime").to("androidx.room", "room-runtime").versionRef("room")
+            alias("room-compiler").to("androidx.room", "room-compiler").versionRef("room")
+            alias("room-ktx").to("androidx.room", "room-ktx").versionRef("room")
+            alias("hilt-compiler").to("com.google.dagger", "hilt-android-compiler").versionRef("hilt")
+            alias("hilt-library").to("com.google.dagger", "hilt-android").versionRef("hilt")
+            //这个常规classpath用
+            alias("hilt-plugin-gradle").to("com.google.dagger", "hilt-android-gradle-plugin").versionRef("hilt")
+            alias("flexbox").to("com.google.android.flexbox:flexbox:3.0.0")
+            alias("timber").to("com.jakewharton.timber:timber:5.0.1")
+
+            //可以指定toml
+            from(files("./libs.versions.toml"))
+        }
+    }
+}
+rootProject.name = "MagicBox"
+include ':app'
+include ':base'
+include ':data'
+include ':data-android'
+include ':sample'
+include ':compose-sample'

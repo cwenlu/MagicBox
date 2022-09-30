@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="clickProxy"
+            type="com.cwl.use_case.flow.FlowMainActivity" />
+    </data>
+
+    <com.google.android.flexbox.FlexboxLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.cwl.use_case.flow.FlowMainActivity">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->clickProxy.jumpLifecycleFlowActivity()}"
+            android:text="LifecycleFlowActivity" />
+    </com.google.android.flexbox.FlexboxLayout>
+</layout>

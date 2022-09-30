@@ -1,0 +1,17 @@
+plugins {
+    id 'kotlin'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
+dependencies{
+    api libs.kotlin.stdlib
+    api libs.kotlin.coroutines.core
+    api libs.retrofit.retrofit
+    api libs.retrofit.gsonConverter
+    api libs.okhttp.loggingInterceptor
+    api libs.retrofit.scalarsConverter
+}
