@@ -19,15 +19,15 @@ pluginManagement {
         mavenCentral()
     }
 
-//    这样有问题
+//    这样有问题，但是换个项目这样配置没问题，不知道哪的问题，坑
 //    //配置一个发现策略,可以避免再配置buildScript#classpath
-    resolutionStrategy {
-        eachPlugin {
-            if (requested.id.id == "dagger.hilt.android.plugin") {
-                useModule("com.google.dagger:hilt-android-gradle-plugin:2.41")
-            }
-        }
-    }
+//    resolutionStrategy {
+//        eachPlugin {
+//            if (requested.id.id == "dagger.hilt.android.plugin") {
+//                useModule("com.google.dagger:hilt-android-gradle-plugin:2.41")
+//            }
+//        }
+//    }
 }
 
 // Enable Gradle's version catalog support
