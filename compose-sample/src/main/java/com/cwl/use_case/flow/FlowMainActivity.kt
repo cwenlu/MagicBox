@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.cwl.use_case.R
 import com.cwl.use_case.databinding.ActivityFlowMainBinding
+import com.cwl.use_case.flow.with_lifecycle.CorrectUseFlowActivity
 import com.cwl.use_case.flow.with_lifecycle.LifecycleFlowActivity
 
 class FlowMainActivity : AppCompatActivity() {
@@ -19,6 +20,7 @@ class FlowMainActivity : AppCompatActivity() {
     }
 
     fun jumpLifecycleFlowActivity() {
-        startActivity(Intent(this, LifecycleFlowActivity::class.java))
+        //startActivity(Intent(this, LifecycleFlowActivity::class.java))
+        startActivity(Intent(this, CorrectUseFlowActivity::class.java))
     }
 }

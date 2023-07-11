@@ -15,7 +15,9 @@ import com.cwl.sample.jetpack.JetpackActivity
 import com.cwl.sample.layoutmanager.BannerActivity
 import com.cwl.sample.layoutmanager.SimpleActivity
 import com.cwl.sample.util.jumpActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private var rv: RecyclerView? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -72,15 +74,19 @@ class MainActivity : AppCompatActivity() {
                     "SimpleLayoutManager" -> {
                         context.jumpActivity<SimpleActivity>()
                     }
+
                     "BannerLayoutManager" -> {
                         context.jumpActivity<BannerActivity>()
                     }
+
                     "TouchMoveTopView" -> {
                         context.jumpActivity<TouchMoveTopViewActivity>()
                     }
+
                     "LitePager" -> {
                         context.jumpActivity<LitePagerActivity>()
                     }
+
                     "jetpack" -> {
                         context.jumpActivity<JetpackActivity>()
                     }

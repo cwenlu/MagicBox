@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -35,6 +37,8 @@ dependencies {
     implementation libs.lifecycle.livedata.ktx
     implementation libs.lifecycle.runtime.ktx
     implementation libs.lifecycle.viewmodel.ktx
+    implementation libs.hilt.library
+    kapt libs.hilt.compiler
     implementation "androidx.activity:activity-ktx:1.4.0"
 
     implementation 'androidx.core:core-ktx:1.7.0'

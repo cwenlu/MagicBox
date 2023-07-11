@@ -40,7 +40,7 @@ class LifecycleFlowViewModel : ViewModel() {
     }.stateIn(scope = viewModelScope, started = SharingStarted.WhileSubscribed(5000), initialValue = 1)
 
     //convert to SharedFlow
-    val result2=flow{
+    val result2 = flow {
         emit(Random.nextInt())
     }.shareIn(scope = viewModelScope,started = SharingStarted.WhileSubscribed())
 }
